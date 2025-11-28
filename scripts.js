@@ -565,7 +565,7 @@ function saveScore(){
         alert('Пожалуйста, введите ваше имя');
         return;
     }
-    const leaderboard = JSON.parse(localStorage.getItem('leaderboard'));
+    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
     const newRecord = {
         name: playerName,
         score: score,
@@ -582,7 +582,7 @@ function saveScore(){
     document.querySelector('#game-over-message p').textContent = 'Ваш рекорд сохранен!';
 }
 function showLeaderboard(){
-    const leaderboard = JSON.parse(localStorage.getItem('leaderboard'));
+    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
     const leaderboardBody = document.getElementById('leaderboard-body');
     leaderboardBody.querySelectorAll('tr').forEach((trow, i) => {leaderboardBody.removeChild(trow)});
 
