@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1efe4;
+    color: #776e65;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+h1 { 
+    font-size: 48px;
+    font-weight: bold;
+}
+.score-container {
+    background-color: #bbada0;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+} 
+.score-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+.score-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+.game-info {
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 20px;
+}
+button {
+    background-color: #8f7a66;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #7c6b5a;
+}
+.game-container {
+    position: relative;
+    background-color: #bbada0;
+    padding: 15px;
+}
+
+.game-board{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    background: #bbada0;
+}
+.grid-cell {
+    position: absolute;
+    background: rgba(238, 228, 218, 0.35);
+}
+.tile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    background: #eee4da;
+    color:#776e65;
+} 
+.tile-2 {background: #eee4da;} 
+.tile-4 {background: #ede0c8;}
+.tile-8 {background: #f2b179; color: #f9f6f2; }
+.tile-16 {background: #f59563; color: #f9f6f2;}
+.tile-32 {background: #f67c5f; color: #f9f6f2;  }
+.tile-64 {background: #f65e3b; color: #f9f6f2; }
+.tile-128 {background: #edcf72; color: #f9f6f2; font-size: 1.3em; }
+.tile-256 {background: #edcc61; color: #f9f6f2; font-size: 1.3em; }
+.tile-512 {background: #edc850; color: #f9f6f2; font-size: 1.3em; }
+.tile-1024 {background: #edc53f; color: #f9f6f2; font-size: 1.1em; }
+.tile-2048 {background: #edc22e; color: #f9f6f2; font-size: 1.1em; }
+.tile-new {
+    animation: appear 0.3s;
+}
+/* */
+.tile-merged {
+    animation: merge 0.2s;
+}
+@keyframes appear {
+    0% {opacity: 0; transform: scale(0); }
+    100% {opacity: 1; transform: scale(1); }
+}
+@keyframes merge {
+    0% {transform: scale(1); }
+    50% {transform: scale(1.2); }
+    100% {transform: scale(1); }
+}
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 228, 218, 0.73);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+.game-over h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.save-score-form {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.player-name-input {
+    padding: 10px;
+    border: 1px solid #bbada0;
+    font-size: 16px;
+}
+.hidden {
+    display: none !important;
+}
+.mobile-controls {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+.control-row{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.control-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 30;
+}
+.modal-content {
+    background-color: #faf8ef;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.leaderboard-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.leaderboard-table th, .leaderboard-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.leaderboard-table th {
+    background-color: #bbada0;
+    color: white;
+}
+
+@media (min-width: 521px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+@media (max-width: 520px) {
+    body {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 36px; 
+    }
+    .game-info {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    .tile {
+        font-size : 24px;
+    }
+    .tile-128,.tile-256,.tile-512{
+        font-size: 22px;
+    }
+    .tile-1024,.tile-2048 {
+        font-size: 18px; 
+    }
+    .mobile-controls { 
+        display: grid;
+    }
+}
+
